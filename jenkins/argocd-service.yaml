@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: argo-cd-argocd-server-svc
+  namespace: argocd
+spec:
+  #  externalTrafficPolicy: Cluster
+  ports:
+  - nodePort: 32703
+    port: 443
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app.kubernetes.io/name: argocd-server
+  type: NodePort
